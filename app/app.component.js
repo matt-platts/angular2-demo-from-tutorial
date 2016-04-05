@@ -1,4 +1,4 @@
-System.register(['angular2/core', './hero-detail.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './hero-detail.component', './hero.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,8 +10,8 @@ System.register(['angular2/core', './hero-detail.component'], function(exports_1
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, hero_detail_component_1;
-    var AppComponent, HEROES;
+    var core_1, hero_detail_component_1, hero_service_1;
+    var AppComponent;
     return {
         setters:[
             function (core_1_1) {
@@ -19,38 +19,37 @@ System.register(['angular2/core', './hero-detail.component'], function(exports_1
             },
             function (hero_detail_component_1_1) {
                 hero_detail_component_1 = hero_detail_component_1_1;
+            },
+            function (hero_service_1_1) {
+                hero_service_1 = hero_service_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
-                function AppComponent() {
+                function AppComponent(_heroService) {
+                    this._heroService = _heroService;
                     this.title = 'Tour of Heroes';
-                    this.heroes = HEROES;
                 }
+                AppComponent.prototype.getHeroes = function () {
+                    var _this = this;
+                    this._heroService.getHeroes().then(function (heroes) { return _this.heroes = heroes; });
+                };
+                AppComponent.prototype.ngOnInit = function () {
+                    this.getHeroes();
+                };
                 AppComponent.prototype.onSelect = function (hero) { this.selectedHero = hero; };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
                         template: "\n\t<h1>{{title}}</h1>\n\t<h2>My Heroes</h2>\n\t<ul class=\"heroes\">\n\t<li *ngFor=\"#hero of heroes\"\n\t[class.selected]=\"hero === selectedHero\"\n\t(click)=\"onSelect(hero)\">\n\t<span class=\"badge\">{{hero.id}}</span> {{hero.name}}\n\t</li>\n\t</ul>\n\t<my-hero-detail [hero]=\"selectedHero\"></my-hero-detail>\n\t",
                         styles: ["\n\t\t.selected {\n\t      \t\tbackground-color: #CFD8DC !important;\n\t          \tcolor: white;\n\t\t}\n\t\t.heroes {\n\t\t\tmargin: 0 0 2em 0;\n\t\t\tlist-style-type: none;\n\t\t\tpadding: 0;\n\t\t\twidth: 15em;\n\t\t}\n\t\t.heroes li {\n\t\t\tcursor: pointer;\n\t\t\tposition: relative;\n\t\t\tleft: 0;\n\t\t\tbackground-color: #EEE;\n\t\t\tmargin: .5em;\n\t\t\tpadding: .3em 0;\n\t\t\theight: 1.6em;\n\t\t\tborder-radius: 4px;\n\t\t}\n\t\t.heroes li.selected:hover {\n\t\t\tbackground-color: #BBD8DC !important;\n\t\t\tcolor: white;\n\t\t}\n\t\t.heroes li:hover {\n\t\t\tcolor: #607D8B;\n\t\t\tbackground-color: #DDD;\n\t\t\tleft: .1em;\n\t\t}\n\t\t.heroes .text {\n\t\t\tposition: relative;\n\t\t\ttop: -3px;\n\t\t}\n\t\t.heroes .badge {\n\t\t\tdisplay: inline-block;\n\t\t\tfont-size: small;\n\t\t\tcolor: white;\n\t\t\tpadding: 0.8em 0.7em 0 0.7em;\n\t\t\tbackground-color: #607D8B;\n\t\t\tline-height: 1em;\n\t\t\tposition: relative;\n\t\t\tleft: -1px;\n\t\t\ttop: -4px;\n\t\t\theight: 1.8em;\n\t\t\tmargin-right: .8em;\n\t\t\tborder-radius: 4px 0 0 4px;\n\t\t}\n\t"],
-                        directives: [hero_detail_component_1.HeroDetailComponent]
+                        directives: [hero_detail_component_1.HeroDetailComponent],
+                        providers: [hero_service_1.HeroService]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [hero_service_1.HeroService])
                 ], AppComponent);
                 return AppComponent;
             }());
             exports_1("AppComponent", AppComponent);
-            HEROES = [
-                { "id": 11, "name": "Mr. Nice" },
-                { "id": 12, "name": "Narco" },
-                { "id": 13, "name": "Bombasto" },
-                { "id": 14, "name": "Celeritas" },
-                { "id": 15, "name": "Magneta" },
-                { "id": 16, "name": "RubberMan" },
-                { "id": 17, "name": "Dynama" },
-                { "id": 18, "name": "Dr IQ" },
-                { "id": 19, "name": "Magma" },
-                { "id": 20, "name": "Tornado" }
-            ];
         }
     }
 });
