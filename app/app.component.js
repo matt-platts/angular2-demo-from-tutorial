@@ -35,9 +35,19 @@ System.register(['angular2/core', 'angular2/router', './hero.service', './dashbo
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
-                    this.title = "Tour Of Heroes";
+                    this.title = 'Tour of Heroes';
                 }
                 AppComponent = __decorate([
+                    core_1.Component({
+                        selector: 'my-app',
+                        template: "\n\t  \t<h1>{{title}}</h1>\n\t    \t<nav>\n\t        \t<a [routerLink]=\"['Dashboard']\">Dashboard</a>\n\t\t    \t<a [routerLink]=\"['Heroes']\">Heroes</a>\n\t\t</nav>\n\t\t<router-outlet></router-outlet>\n\t",
+                        styleUrls: ['app/app.component.css'],
+                        directives: [router_1.ROUTER_DIRECTIVES],
+                        providers: [
+                            router_1.ROUTER_PROVIDERS,
+                            hero_service_1.HeroService
+                        ]
+                    }),
                     router_1.RouteConfig([
                         {
                             path: '/dashboard',
@@ -55,17 +65,7 @@ System.register(['angular2/core', 'angular2/router', './hero.service', './dashbo
                             name: 'Heroes',
                             component: heroes_component_1.HeroesComponent
                         }
-                    ]),
-                    core_1.Component({
-                        selector: 'my-app',
-                        template: "\n\t  \t<h1>{{title}}</h1>\n\t    \t<nav>\n\t        \t<a [routerLink]=\"['Dashboard']\">Dashboard</a>\n\t\t    \t<a [routerLink]=\"['Heroes']\">Heroes</a>\n\t\t</nav>\n\t\t<router-outlet></router-outlet>\n\t",
-                        styleUrls: ['app/app.component.css'],
-                        directives: [router_1.ROUTER_DIRECTIVES],
-                        providers: [
-                            router_1.ROUTER_PROVIDERS,
-                            hero_service_1.HeroService
-                        ]
-                    }), 
+                    ]), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
                 return AppComponent;
