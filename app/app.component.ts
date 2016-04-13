@@ -29,8 +29,9 @@ import { HeroesComponent } from './heroes.component';
 		</nav>
 		<router-outlet></router-outlet>
 	`,
-	
+
 	directives: [ROUTER_DIRECTIVES],
+
 	providers: [
 		ROUTER_PROVIDERS,
 		HeroService
