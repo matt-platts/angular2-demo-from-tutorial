@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './hero.service', './hero'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './hero', './hero.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', './hero.service', './hero']
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, hero_service_1, hero_1;
+    var core_1, router_1, hero_1, hero_service_1;
     var HeroDetailComponent;
     return {
         setters:[
@@ -20,11 +20,11 @@ System.register(['angular2/core', 'angular2/router', './hero.service', './hero']
             function (router_1_1) {
                 router_1 = router_1_1;
             },
-            function (hero_service_1_1) {
-                hero_service_1 = hero_service_1_1;
-            },
             function (hero_1_1) {
                 hero_1 = hero_1_1;
+            },
+            function (hero_service_1_1) {
+                hero_service_1 = hero_service_1_1;
             }],
         execute: function() {
             HeroDetailComponent = (function () {
@@ -48,7 +48,8 @@ System.register(['angular2/core', 'angular2/router', './hero.service', './hero']
                 HeroDetailComponent = __decorate([
                     core_1.Component({
                         selector: 'my-hero-detail',
-                        templateUrl: 'app/hero-detail.component.html'
+                        templateUrl: 'app/hero-detail.component.html',
+                        styleUrls: ['app/hero-detail.component.css']
                     }), 
                     __metadata('design:paramtypes', [hero_service_1.HeroService, router_1.RouteParams])
                 ], HeroDetailComponent);
